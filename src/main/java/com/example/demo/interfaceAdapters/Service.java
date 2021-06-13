@@ -29,7 +29,7 @@ public class Service implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		CustomerDataMapper customer = new CustomerDataMapper("Emre", "Aytekin");
+		CustomerDataMapper customer = new CustomerDataMapper("Emre", "Psycho");
 		CustomerDataMapper savedCustomer = customerRepo.save(customer);
 		
 		log.info("Saved customer is {}", savedCustomer.getId());
