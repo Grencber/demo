@@ -21,8 +21,7 @@ public class CustomerDataMapper {
     public CustomerDataMapper() {
     }
 
-    public CustomerDataMapper(Integer id, String name, String surname) {
-        this.id = id;
+    public CustomerDataMapper(String name, String surname) {
         this.name = name;
         this.surname = surname;
     }

@@ -28,9 +28,7 @@ public class TransactionDataMapper {
 
 	}
 
-	public TransactionDataMapper(Integer id, Integer accountFrom, Integer accountTo, BigInteger amount, Date date) {
-		super();
-		this.id = id;
+	public TransactionDataMapper(Integer accountFrom, Integer accountTo, BigInteger amount, Date date) {
 		this.accountFrom = accountFrom;
 		this.accountTo = accountTo;
 		this.amount = amount;

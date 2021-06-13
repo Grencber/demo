@@ -30,12 +30,12 @@ class DemoApplicationTests {
 	void contextLoads() {
 	}
 	
-	@Test
-	void testDB() {
-		CustomerDataMapper customer = new CustomerDataMapper(1, "Emre", "Aytekin");
-		customerRepo.save(customer);
-		AccountDataMapper account = new AccountDataMapper(10, new BigInteger("100,000"));
-		accountRepo.save(account);
-	}
+//	@Test
+//	void testDB() {
+//		CustomerDataMapper customer = new CustomerDataMapper(1, "Emre", "Aytekin");
+//		customerRepo.save(customer);
+//		AccountDataMapper account = new AccountDataMapper(10, new BigInteger("100,000"));
+//		accountRepo.save(account);
+//	}
 
 }

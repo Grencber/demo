@@ -18,9 +18,9 @@ public class AccountDataMapper {
     public AccountDataMapper() {
     }
 
-    public AccountDataMapper(Integer id, BigInteger balance) {
-        this.id = id;
+    public AccountDataMapper(BigInteger balance, CustomerDataMapper customerDataMapper) {
         this.balance = balance;
+        this.customer = customerDataMapper;
     }
 
     public Integer getId() {
@@ -38,5 +38,15 @@ public class AccountDataMapper {
     public void setBalance(BigInteger balance) {
         this.balance = balance;
     }
+
+	public CustomerDataMapper getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(CustomerDataMapper customer) {
+		this.customer = customer;
+	}
+    
+    
 }
 
