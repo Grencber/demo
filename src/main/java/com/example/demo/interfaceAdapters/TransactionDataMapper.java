@@ -1,5 +1,6 @@
 package com.example.demo.interfaceAdapters;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
 
@@ -7,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.sun.istack.Nullable;
 
 @Entity
 @Table(name = "transaction")
@@ -16,11 +19,12 @@ public class TransactionDataMapper {
 	@GeneratedValue
 	private Integer id;
 	
+	@Nullable
 	private Integer accountFrom;
 	
 	private Integer accountTo;
 	
-	private BigInteger amount;
+	private BigDecimal amount;
 	
 	private Date date;
 	
@@ -28,7 +32,7 @@ public class TransactionDataMapper {
 
 	}
 
-	public TransactionDataMapper(Integer accountFrom, Integer accountTo, BigInteger amount, Date date) {
+	public TransactionDataMapper(Integer accountFrom, Integer accountTo, BigDecimal amount, Date date) {
 		this.accountFrom = accountFrom;
 		this.accountTo = accountTo;
 		this.amount = amount;
@@ -42,7 +46,7 @@ public class TransactionDataMapper {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
+	
 	public Integer getAccountFrom() {
 		return accountFrom;
 	}
@@ -59,11 +63,11 @@ public class TransactionDataMapper {
 		this.accountTo = accountTo;
 	}
 
-	public BigInteger getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
-	public void setAmount(BigInteger amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 

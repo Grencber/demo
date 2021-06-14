@@ -1,6 +1,7 @@
 package com.example.demo.interfaceAdapters;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
+import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,11 +27,14 @@ public class Controller {
 	@Autowired
 	JpaTransactionRepository transactionRepo;
 	
+//	@Autowired
+//	TransactionService transactionService;
+	
 	private static final Logger log = LoggerFactory.getLogger(Controller.class);
 	
 	@GetMapping("/createAccount/{customerId}/initialCredit/{initialCredit}")
 	public ResponseEntity<Account> createAccount(@PathVariable("customerId") Integer customerId,
-												 @PathVariable("initialCredit") BigInteger intialCredit) {
+												 @PathVariable("initialCredit") BigDecimal initialCredit) {
 		if (customerId == 0 || customerId == null) {
 			throw new CustomerInputNotValid("CustomerId " + customerId + " is not valid...");
 		}
@@ -39,11 +43,19 @@ public class Controller {
 			throw new CustomerNotFoundException("Customer is not found");
 		}
 		
-		if (intialCredit.compareTo(new BigInteger("0")) > 0) {
+		if (initialCredit.compareTo(new BigDecimal("0")) > 0) {
 			log.info("Initial credit is bigger than 0");
 		} else {
 			log.info("Initial credit is not bigger than 0");
 		}
+	
+		AccountDataMapper account = new AccountDataMapper();
+		account.setBalance(initialCredit);
+		account.setCustomer(customerRepo.findById(customerId).get());
+		accountRepo.save(account);
+		transactionRepo.save(new TransactionDataMapper(null, account.getId(), initialCredit, new Date()));
+//		transactionService.saveTransaction();
+
 		return null;
 	}
 

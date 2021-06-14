@@ -1,7 +1,13 @@
 package com.example.demo.interfaceAdapters;
 
-import javax.persistence.*;
-import java.math.BigInteger;
+import java.math.BigDecimal;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "account")
@@ -10,7 +16,7 @@ public class AccountDataMapper {
     @GeneratedValue
     Integer id;
 
-    BigInteger balance;
+    BigDecimal balance;
 
     @ManyToOne(fetch = FetchType.LAZY)
     CustomerDataMapper customer;
@@ -18,7 +24,7 @@ public class AccountDataMapper {
     public AccountDataMapper() {
     }
 
-    public AccountDataMapper(BigInteger balance, CustomerDataMapper customerDataMapper) {
+    public AccountDataMapper(BigDecimal balance, CustomerDataMapper customerDataMapper) {
         this.balance = balance;
         this.customer = customerDataMapper;
     }
@@ -31,13 +37,13 @@ public class AccountDataMapper {
         this.id = id;
     }
 
-    public BigInteger getBalance() {
-        return balance;
-    }
+	public BigDecimal getBalance() {
+		return balance;
+	}
 
-    public void setBalance(BigInteger balance) {
-        this.balance = balance;
-    }
+	public void setBalance(BigDecimal balance) {
+		this.balance = balance;
+	}
 
 	public CustomerDataMapper getCustomer() {
 		return customer;

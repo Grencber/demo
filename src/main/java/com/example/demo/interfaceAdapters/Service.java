@@ -1,16 +1,12 @@
 package com.example.demo.interfaceAdapters;
 
-import java.math.BigInteger;
-import java.util.Optional;
-
-import javax.transaction.Transactional;
+import java.math.BigDecimal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 @Component
 public class Service implements CommandLineRunner{
@@ -21,8 +17,8 @@ public class Service implements CommandLineRunner{
 	@Autowired
 	JpaCustomerRepository customerRepo;
 	
-	@Autowired
-	JpaTransactionRepository transactionRepo;
+//	@Autowired
+//	JpaTransactionRepository transactionRepo;
 	
 	private static final Logger log = LoggerFactory.getLogger(Service.class);
 
@@ -34,7 +30,7 @@ public class Service implements CommandLineRunner{
 		
 		log.info("Saved customer is {}", savedCustomer.getId());
 		
-		AccountDataMapper account = new AccountDataMapper(new BigInteger("1000"),customer);
+		AccountDataMapper account = new AccountDataMapper(new BigDecimal("1000"),customer);
 		AccountDataMapper savedAccount = accountRepo.save(account);
 		log.info("Saved account id is {}", savedAccount.getId());
 	}
