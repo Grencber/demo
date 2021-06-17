@@ -24,11 +24,13 @@ public class Controller {
 	@Autowired
 	JpaCustomerRepository customerRepo;
 	
-	@Autowired
-	JpaTransactionRepository transactionRepo;
+
 	
-//	@Autowired
-//	TransactionService transactionService;
+	@Autowired
+	private TransactionService transactionService;
+	
+	@Autowired
+	
 	
 	private static final Logger log = LoggerFactory.getLogger(Controller.class);
 	
@@ -53,8 +55,8 @@ public class Controller {
 		account.setBalance(initialCredit);
 		account.setCustomer(customerRepo.findById(customerId).get());
 		accountRepo.save(account);
-		transactionRepo.save(new TransactionDataMapper(null, account.getId(), initialCredit, new Date()));
-//		transactionService.saveTransaction();
+		
+		transactionService.makeTransaction(null, account.getId(), initialCredit, new Date());
 
 		return null;
 	}
