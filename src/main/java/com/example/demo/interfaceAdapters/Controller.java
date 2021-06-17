@@ -23,14 +23,12 @@ public class Controller {
 
 	@Autowired
 	JpaCustomerRepository customerRepo;
-	
 
-	
 	@Autowired
 	private TransactionService transactionService;
 	
 	@Autowired
-	
+	private AccountService accountService;
 	
 	private static final Logger log = LoggerFactory.getLogger(Controller.class);
 	
@@ -51,12 +49,8 @@ public class Controller {
 			log.info("Initial credit is not bigger than 0");
 		}
 	
-		AccountDataMapper account = new AccountDataMapper();
-		account.setBalance(initialCredit);
-		account.setCustomer(customerRepo.findById(customerId).get());
-		accountRepo.save(account);
-		
-		transactionService.makeTransaction(null, account.getId(), initialCredit, new Date());
+		Integer openedAccountId = accountService.openNewAccount(initialCredit, customerId);
+		transactionService.makeTransaction(null, openedAccountId, initialCredit, new Date());
 
 		return null;
 	}
