@@ -9,7 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Service implements CommandLineRunner{
+public class InitialDataTransactionService implements CommandLineRunner{
 
 	@Autowired
 	JpaAccountRepository accountRepo;
@@ -17,10 +17,8 @@ public class Service implements CommandLineRunner{
 	@Autowired
 	JpaCustomerRepository customerRepo;
 	
-//	@Autowired
-//	JpaTransactionRepository transactionRepo;
 	
-	private static final Logger log = LoggerFactory.getLogger(Service.class);
+	private static final Logger log = LoggerFactory.getLogger(InitialDataTransactionService.class);
 
 	@Override
 	public void run(String... args) throws Exception {
