@@ -61,7 +61,7 @@ public class Controller {
 		return new ResponseEntity<AccountDataMapper>(HttpStatus.OK);
 	}
 	
-	@GetMapping("/partial/{id}")
+	@GetMapping("/retrieveCustomerInfo/{id}")
 	public ResponseEntity<ObjectNode> getCustomerInfo(@PathVariable(value = "id") Integer customerId) {
 		customerIdValidatorService.validateCustomerId(customerId);
 		ObjectNode customerdata = customerService.findCustomerById(customerId);
