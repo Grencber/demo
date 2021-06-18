@@ -1,9 +1,18 @@
 package com.example.demo;
 
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
+
+import java.math.BigDecimal;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 
+import com.example.demo.interfaceAdapters.Controller;
+import com.example.demo.interfaceAdapters.CreateAccountRequestObject;
 import com.example.demo.interfaceAdapters.JpaAccountRepository;
 import com.example.demo.interfaceAdapters.JpaCustomerRepository;
 
@@ -16,8 +25,16 @@ class DemoApplicationTests {
 	@Autowired
 	JpaCustomerRepository customerRepo;
 	
+	@Autowired
+	Controller controller;
+	
 	@Test
 	void contextLoads() {
+		CreateAccountRequestObject createAccountRequestObject = new CreateAccountRequestObject();
+		createAccountRequestObject.setCustomerId(1);
+		createAccountRequestObject.setInitialCredit(new BigDecimal(100));
+		String actual = String.valueOf(controller.createAccount(createAccountRequestObject));
+		assertEquals(actual, "<200 OK OK,[]>");
 	}
 	
 //	@Test

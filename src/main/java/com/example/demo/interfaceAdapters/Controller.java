@@ -57,7 +57,7 @@ public class Controller {
 	}
 	
 	@GetMapping("/partial/{id}")
-	public ObjectNode getCustomerInfo(@PathVariable(value = "id") Integer customerId) {
+	public ResponseEntity<ObjectNode> getCustomerInfo(@PathVariable(value = "id") Integer customerId) {
 		customerIdValidatorService.validateCustomerId(customerId);
 		ObjectNode customerdata = customerService.findCustomerById(customerId);
 		ArrayNode accountDataByCustomerId = accountService.getAllAccountsPartiallyByCustomer(customerId);
@@ -65,7 +65,7 @@ public class Controller {
 		List<Integer> accountToIds = accountService.getAllAccountIdsByCustomerId(customerId);
 		ArrayNode transactionsByCustomerId = transactionService.getAllTransactionsToAnAccountByCustomerId(accountToIds);
 		customerdata.put("transactions", transactionsByCustomerId);
-		return customerdata;
+		return new ResponseEntity<ObjectNode>(customerdata, HttpStatus.OK);
 	}
 
 }
