@@ -1,4 +1,4 @@
-package com.example.demo.interfaceAdapters;
+package com.example.demo.domain;
 
 import org.springframework.lang.NonNull;
 

@@ -1,4 +1,4 @@
-package com.example.demo.interfaceAdapters;
+package com.example.demo.domain;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

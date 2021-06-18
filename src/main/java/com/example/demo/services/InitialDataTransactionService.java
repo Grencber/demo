@@ -1,4 +1,4 @@
-package com.example.demo.interfaceAdapters;
+package com.example.demo.services;
 
 import java.math.BigDecimal;
 
@@ -7,6 +7,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import com.example.demo.domain.AccountDataMapper;
+import com.example.demo.domain.CustomerDataMapper;
+import com.example.demo.interfaceAdapters.JpaAccountRepository;
+import com.example.demo.interfaceAdapters.JpaCustomerRepository;
 
 @Component
 public class InitialDataTransactionService implements CommandLineRunner{
