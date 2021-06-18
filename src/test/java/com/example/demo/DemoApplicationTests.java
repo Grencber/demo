@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 
-import com.example.demo.domain.CreateAccountRequestMapper;
 import com.example.demo.interfaceAdapters.Controller;
+import com.example.demo.interfaceAdapters.CreateAccountRequestMapper;
 import com.example.demo.interfaceAdapters.JpaAccountRepository;
 import com.example.demo.interfaceAdapters.JpaCustomerRepository;
 
