@@ -1,18 +1,18 @@
-package com.example.demo.interfaceAdapters;
+package com.example.demo.domain;
 
 import java.math.BigDecimal;
 
-public class CreateAccountRequestObject {
+public class CreateAccountRequestMapper {
 
 	private Integer customerId;
 	
 	private BigDecimal initialCredit;
 
-	public CreateAccountRequestObject() {
+	public CreateAccountRequestMapper() {
 
 	}
 	
-	public CreateAccountRequestObject(Integer customerId, BigDecimal initialCredit) {
+	public CreateAccountRequestMapper(Integer customerId, BigDecimal initialCredit) {
 		this.customerId = customerId;
 		this.initialCredit = initialCredit;
 	}

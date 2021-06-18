@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 
+import com.example.demo.domain.CreateAccountRequestMapper;
 import com.example.demo.interfaceAdapters.Controller;
-import com.example.demo.interfaceAdapters.CreateAccountRequestObject;
 import com.example.demo.interfaceAdapters.JpaAccountRepository;
 import com.example.demo.interfaceAdapters.JpaCustomerRepository;
 
@@ -30,7 +30,7 @@ class DemoApplicationTests {
 	
 	@Test
 	void contextLoads() {
-		CreateAccountRequestObject createAccountRequestObject = new CreateAccountRequestObject();
+		CreateAccountRequestMapper createAccountRequestObject = new CreateAccountRequestMapper();
 		createAccountRequestObject.setCustomerId(1);
 		createAccountRequestObject.setInitialCredit(new BigDecimal(100));
 		String actual = String.valueOf(controller.createAccount(createAccountRequestObject));
