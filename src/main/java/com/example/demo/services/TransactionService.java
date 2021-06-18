@@ -38,7 +38,9 @@ public class TransactionService {
 					objectNode.put("amount", transactionDataMapper.getAmount());
 					objectNode.put("date", transactionDataMapper.getDate().getDate());
 				}
-				arrayNode.add(objectNode);
+				if (!objectNode.isEmpty()) {
+					arrayNode.add(objectNode);
+				}
 			}
 		}
 		
