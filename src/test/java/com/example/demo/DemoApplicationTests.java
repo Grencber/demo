@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 
+import com.example.demo.exceptions.CustomerInputNotValidException;
+import com.example.demo.exceptions.CustomerNotFoundException;
 import com.example.demo.interfaceAdapters.Controller;
 import com.example.demo.interfaceAdapters.CreateAccountRequestMapper;
 import com.example.demo.interfaceAdapters.JpaAccountRepository;
@@ -29,7 +32,7 @@ class DemoApplicationTests {
 	Controller controller;
 	
 	@Test
-	void contextLoads() {
+	void testCreateAccountForExistingCustomerId() {
 		CreateAccountRequestMapper createAccountRequestObject = new CreateAccountRequestMapper();
 		createAccountRequestObject.setCustomerId(1);
 		createAccountRequestObject.setInitialCredit(new BigDecimal(100));
@@ -37,6 +40,23 @@ class DemoApplicationTests {
 		assertEquals(actual, "<200 OK OK,[]>");
 	}
 	
+	@Test
+	void testCreateAccountForNonExistingCustomerIdFails() {
+		CreateAccountRequestMapper createAccountRequestObject = new CreateAccountRequestMapper();
+		createAccountRequestObject.setCustomerId(2);
+		createAccountRequestObject.setInitialCredit(new BigDecimal(100));
+		Throwable exception = assertThrows(CustomerNotFoundException.class, () -> controller.createAccount(createAccountRequestObject));
+		assertEquals("Customer is not found", exception.getMessage());
+	}
+	
+	@Test
+	void testCreateAccountForNonValidCustomerIdFails() {
+		CreateAccountRequestMapper createAccountRequestObject = new CreateAccountRequestMapper();
+		createAccountRequestObject.setCustomerId(0);
+		createAccountRequestObject.setInitialCredit(new BigDecimal(100));
+		Throwable exception = assertThrows(CustomerInputNotValidException.class, () -> controller.createAccount(createAccountRequestObject));
+		assertEquals("CustomerId 0 is not valid...", exception.getMessage());
+	}
 //	@Test
 //	void testDB() {
 //		CustomerDataMapper customer = new CustomerDataMapper(1, "Emre", "Aytekin");
