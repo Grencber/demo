@@ -1,4 +1,4 @@
-package com.example.demo.interfaceAdapters;
+package com.example.demo.services;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.domain.AccountDataMapper;
+import com.example.demo.interfaceAdapters.JpaAccountRepository;
+import com.example.demo.interfaceAdapters.JpaCustomerRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;

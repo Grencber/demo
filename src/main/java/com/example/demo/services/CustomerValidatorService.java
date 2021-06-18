@@ -1,4 +1,4 @@
-package com.example.demo.interfaceAdapters;
+package com.example.demo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.exceptions.CustomerInputNotValidException;
 import com.example.demo.exceptions.CustomerNotFoundException;
+import com.example.demo.interfaceAdapters.JpaCustomerRepository;
 
 @Service
 public class CustomerValidatorService {
