@@ -1,3 +1,5 @@
+# Unit Tests are under 'src/test/java/com/example/demo/'. To run them: Right-click 'DemoApplicationTest'-> Run as Junit Test
+# CI/CD pipeline is under Actions tab in Github Repo for 'demo' application.
 # Rules
 demo is a banking application which features creating new accounts for its existing customers. It features the following:
   1-) Creates new accounts for its existing customers and record this transaction to the database.
